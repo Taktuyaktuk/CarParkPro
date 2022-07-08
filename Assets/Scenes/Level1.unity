@@ -133,7 +133,7 @@ GameObject:
   m_Component:
   - component: {fileID: 26934941}
   m_Layer: 0
-  m_Name: SteringWheel
+  m_Name: SteeringWheelHolder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -232,6 +232,7 @@ MonoBehaviour:
     steering: 0
   MaxMotorTorque: 400
   MaxSteeringAngle: 30
+  SteeringWheel: {fileID: 1341242882}
 --- !u!1 &154123188
 GameObject:
   m_ObjectHideFlags: 0
@@ -804,7 +805,7 @@ GameObject:
   - component: {fileID: 1341242884}
   - component: {fileID: 1341242886}
   m_Layer: 0
-  m_Name: Image
+  m_Name: SteeringWheel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -882,7 +883,6 @@ MonoBehaviour:
   Wheel: {fileID: 1341242883}
   MaxSteerAngle: 200
   ReleaseSpeed: 300
-  OutPut: 0
 --- !u!1 &1568081904
 GameObject:
   m_ObjectHideFlags: 0

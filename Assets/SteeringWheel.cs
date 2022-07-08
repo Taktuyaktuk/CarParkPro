@@ -14,7 +14,7 @@ public class SteeringWheel : MonoBehaviour,IDragHandler,IPointerDownHandler,IPoi
     private Vector2 _center;
     public float MaxSteerAngle = 200;
     public float ReleaseSpeed = 300f;
-    public float OutPut;
+    //public float OutPut;
 
 
 
@@ -37,7 +37,11 @@ public class SteeringWheel : MonoBehaviour,IDragHandler,IPointerDownHandler,IPoi
             }
         }
         Wheel.localEulerAngles = new Vector3(0, 0, -_wheelAngle);
-        OutPut = _wheelAngle / MaxSteerAngle;
+        //OutPut = _wheelAngle / MaxSteerAngle;
+    }
+    public float OutPut()
+    {
+        return _wheelAngle / MaxSteerAngle;
     }
 
     public void OnPointerDown (PointerEventData data)
