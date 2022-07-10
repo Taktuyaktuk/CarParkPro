@@ -11,8 +11,29 @@ public class CarController : MonoBehaviour
     public float Acceleration;
     public float Brake;
 
-    public void AccelerationInput(float input) { Acceleration = input; }
-    public void BrakeInput(float input) { Brake = input; }
+    [SerializeField]
+    private bool _drivingForward;
+
+    private void Update()
+    {
+        _drivingForward = GameObject.Find("GearBoxManager").GetComponent<GearBoxManager>().DrivingForward;
+    }
+
+    public void AccelerationInput(float input) 
+    {
+        if (_drivingForward == true)
+        {
+            Acceleration = input;
+        }
+        if(_drivingForward == false)
+        {
+            Acceleration = -input;
+        }
+    }
+    public void BrakeInput(float input) 
+    { 
+        Brake = input; 
+    }
 
 
 
