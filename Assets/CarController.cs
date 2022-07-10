@@ -14,6 +14,8 @@ public class CarController : MonoBehaviour
     [SerializeField]
     private bool _drivingForward;
 
+    
+
     private void Update()
     {
         _drivingForward = GameObject.Find("GearBoxManager").GetComponent<GearBoxManager>().DrivingForward;
