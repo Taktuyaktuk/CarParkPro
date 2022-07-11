@@ -290,8 +290,8 @@ MonoBehaviour:
         m_Calls:
         - m_Target: {fileID: 150235492}
           m_TargetAssemblyTypeName: CarController, Assembly-CSharp
-          m_MethodName: AccelerationInput
-          m_Mode: 4
+          m_MethodName: BrakeInput
+          m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
             m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -306,8 +306,8 @@ MonoBehaviour:
         m_Calls:
         - m_Target: {fileID: 150235492}
           m_TargetAssemblyTypeName: CarController, Assembly-CSharp
-          m_MethodName: AccelerationInput
-          m_Mode: 4
+          m_MethodName: BrakeInput
+          m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
             m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -322,8 +322,8 @@ MonoBehaviour:
         m_Calls:
         - m_Target: {fileID: 150235492}
           m_TargetAssemblyTypeName: CarController, Assembly-CSharp
-          m_MethodName: AccelerationInput
-          m_Mode: 4
+          m_MethodName: BrakeInput2
+          m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
             m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -338,8 +338,8 @@ MonoBehaviour:
         m_Calls:
         - m_Target: {fileID: 150235492}
           m_TargetAssemblyTypeName: CarController, Assembly-CSharp
-          m_MethodName: AccelerationInput
-          m_Mode: 4
+          m_MethodName: BrakeInput2
+          m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
             m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -1037,7 +1037,7 @@ Rigidbody:
   m_GameObject: {fileID: 150235489}
   serializedVersion: 2
   m_Mass: 1500
-  m_Drag: 1.5
+  m_Drag: 0.9
   m_AngularDrag: 0
   m_UseGravity: 1
   m_IsKinematic: 0
@@ -1065,11 +1065,12 @@ MonoBehaviour:
     rightWheel: {fileID: 1617931167}
     motor: 1
     steering: 0
-  MaxMotorTorque: 700
+  MaxMotorTorque: 800
   MaxSteeringAngle: 30
   Acceleration: 0
   Brake: 0
   _drivingForward: 0
+  rb: {fileID: 150235491}
   SteeringWheel: {fileID: 1341242882}
 --- !u!1 &153581768 stripped
 GameObject:
@@ -2580,6 +2581,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 590971844}
+  - component: {fileID: 590971845}
   m_Layer: 0
   m_Name: GearBox
   m_TagString: Untagged
@@ -2598,8 +2600,10 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.7189515, y: 1.3519, z: 1}
   m_Children:
-  - {fileID: 857716631}
+  - {fileID: 814774211}
+  - {fileID: 1403728481}
   - {fileID: 1879849533}
+  - {fileID: 857716631}
   m_Father: {fileID: 2121296928}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2608,6 +2612,19 @@ RectTransform:
   m_AnchoredPosition: {x: -65, y: 308.6}
   m_SizeDelta: {x: 98, y: 120}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &590971845
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 590971843}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 01243c6cd0f31bf4692aa289d387cd1e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  GearBoxUp: {fileID: 1946679574}
 --- !u!1 &609987303
 GameObject:
   m_ObjectHideFlags: 0
@@ -2878,9 +2895,7 @@ RectTransform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: -66.32467}
   m_LocalScale: {x: 0.95653576, y: 0.95653576, z: 0.95653576}
-  m_Children:
-  - {fileID: 1946679575}
-  - {fileID: 1328565665}
+  m_Children: []
   m_Father: {fileID: 2121296928}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -3312,6 +3327,42 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3c8c4aac5b7aa2d409f835cbf933e02e, type: 3}
+--- !u!1 &814774210
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 814774211}
+  m_Layer: 0
+  m_Name: GearBoxBackward
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &814774211
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 814774210}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0.5335967, y: 1.567233, z: 1}
+  m_Children:
+  - {fileID: 1328565665}
+  m_Father: {fileID: 590971844}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: -30.600006}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1001 &817542673
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3521,17 +3572,17 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 857716630}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.53359675, y: 1.567233, z: 1}
+  m_LocalScale: {x: 0.5335967, y: 1.567233, z: 1}
   m_Children: []
   m_Father: {fileID: 590971844}
-  m_RootOrder: 0
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 30.6}
-  m_SizeDelta: {x: 177, y: 37}
+  m_AnchoredPosition: {x: -0.000030517578, y: 33.911327}
+  m_SizeDelta: {x: 177, y: 32.7743}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &857716632
 MonoBehaviour:
@@ -3553,6 +3604,18 @@ MonoBehaviour:
         - m_Target: {fileID: 836732255}
           m_TargetAssemblyTypeName: GearBoxManager, Assembly-CSharp
           m_MethodName: ForwardGear
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+        - m_Target: {fileID: 590971845}
+          m_TargetAssemblyTypeName: GearBoxVisualSwitch, Assembly-CSharp
+          m_MethodName: GearBoxUpImage
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
@@ -3619,7 +3682,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -3901,7 +3964,7 @@ WheelCollider:
   m_Radius: 0.5
   m_SuspensionSpring:
     spring: 35000
-    damper: 4500
+    damper: 9000
     targetPosition: 0.5
   m_SuspensionDistance: 0.3
   m_ForceAppPointDistance: 0
@@ -5388,7 +5451,7 @@ GameObject:
   - component: {fileID: 1328565667}
   - component: {fileID: 1328565666}
   m_Layer: 0
-  m_Name: Image (1)
+  m_Name: GearBoxReverse
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5402,15 +5465,15 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1328565664}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 69.33841}
-  m_LocalScale: {x: 1.0454392, y: 1.0454392, z: 1.0454392}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 2.6066773, y: 0.47197813, z: 1}
   m_Children: []
-  m_Father: {fileID: 701915780}
-  m_RootOrder: 1
+  m_Father: {fileID: 814774211}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 62.15866, y: 154.13927}
+  m_AnchoredPosition: {x: -1, y: 23.7}
   m_SizeDelta: {x: 70, y: 140}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1328565666
@@ -5427,7 +5490,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -5622,6 +5685,42 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!1 &1403728480
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1403728481}
+  m_Layer: 0
+  m_Name: GearBoxForward
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1403728481
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1403728480}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0.53359663, y: 1.567233, z: 1}
+  m_Children:
+  - {fileID: 1946679575}
+  m_Father: {fileID: 590971844}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0.00012589, y: -0.28106117}
+  m_SizeDelta: {x: 177, y: 76.4085}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1001 &1407476408
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6553,7 +6652,7 @@ WheelCollider:
   m_Radius: 0.5
   m_SuspensionSpring:
     spring: 35000
-    damper: 4500
+    damper: 9000
     targetPosition: 0.5
   m_SuspensionDistance: 0.3
   m_ForceAppPointDistance: 0
@@ -7502,7 +7601,7 @@ WheelCollider:
   m_Radius: 0.5
   m_SuspensionSpring:
     spring: 35000
-    damper: 4500
+    damper: 9000
     targetPosition: 0.5
   m_SuspensionDistance: 0.3
   m_ForceAppPointDistance: 0
@@ -7593,12 +7692,12 @@ RectTransform:
   m_LocalScale: {x: 0.53359675, y: 1.567233, z: 1}
   m_Children: []
   m_Father: {fileID: 590971844}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -30.6}
-  m_SizeDelta: {x: 177, y: 37}
+  m_AnchoredPosition: {x: 0, y: -20.2991}
+  m_SizeDelta: {x: 177, y: 32.7743}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1879849534
 MonoBehaviour:
@@ -7620,6 +7719,18 @@ MonoBehaviour:
         - m_Target: {fileID: 836732255}
           m_TargetAssemblyTypeName: GearBoxManager, Assembly-CSharp
           m_MethodName: BackwardGear
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+        - m_Target: {fileID: 590971845}
+          m_TargetAssemblyTypeName: GearBoxVisualSwitch, Assembly-CSharp
+          m_MethodName: GearBoxDownImage
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
@@ -7686,7 +7797,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -8486,7 +8597,7 @@ GameObject:
   - component: {fileID: 1946679577}
   - component: {fileID: 1946679576}
   m_Layer: 0
-  m_Name: Image
+  m_Name: GearBoxDrive
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -8500,15 +8611,15 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1946679574}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 69.33841}
-  m_LocalScale: {x: 1.0454392, y: 1.0454392, z: 1.0454392}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 2.6066773, y: 0.47197813, z: 1}
   m_Children: []
-  m_Father: {fileID: 701915780}
+  m_Father: {fileID: 1403728481}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -26.703644, y: 154.13927}
+  m_AnchoredPosition: {x: -0.00010681, y: 4.5}
   m_SizeDelta: {x: 70, y: 140}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1946679576
@@ -8525,7 +8636,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -8729,7 +8840,7 @@ WheelCollider:
   m_Radius: 0.5
   m_SuspensionSpring:
     spring: 35000
-    damper: 4500
+    damper: 9000
     targetPosition: 0.5
   m_SuspensionDistance: 0.3
   m_ForceAppPointDistance: 0

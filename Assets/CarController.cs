@@ -14,7 +14,8 @@ public class CarController : MonoBehaviour
     [SerializeField]
     private bool _drivingForward;
 
-    
+    public Rigidbody rb;
+    private Vector3 Speed;
 
     private void Update()
     {
@@ -32,9 +33,30 @@ public class CarController : MonoBehaviour
             Acceleration = -input;
         }
     }
-    public void BrakeInput(float input) 
-    { 
-        Brake = input; 
+    
+
+    public void BrakeInput()
+    {
+        foreach (AxleInfo axleInfo in axleInfos)
+        {
+            if (axleInfo.motor)
+            {
+                axleInfo.leftWheel.brakeTorque = 1f;
+                axleInfo.rightWheel.brakeTorque = 1f;
+            }
+        }
+    }
+
+    public void BrakeInput2()
+    {
+        foreach (AxleInfo axleInfo in axleInfos)
+        {
+            if (axleInfo.motor)
+            {
+                axleInfo.leftWheel.brakeTorque = 0f;
+                axleInfo.rightWheel.brakeTorque = 0f;
+            }
+        }
     }
 
 
