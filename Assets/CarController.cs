@@ -22,6 +22,22 @@ public class CarController : MonoBehaviour
         _drivingForward = GameObject.Find("GearBoxManager").GetComponent<GearBoxManager>().DrivingForward;
     }
 
+    public void VisualWheelCollider(WheelCollider collider)
+    {
+        if(collider.transform.childCount == 0)
+        {
+            return;
+        }
+        Transform visualWheel = collider.transform.GetChild(0);
+        Vector3 position;
+        Quaternion rotation;
+        collider.GetWorldPose(out position, out rotation);
+
+        visualWheel.transform.position = position;
+        visualWheel.transform.rotation = rotation;
+    }
+
+
     public void AccelerationInput(float input) 
     {
         if (_drivingForward == true)
@@ -82,6 +98,9 @@ public class CarController : MonoBehaviour
                 axleInfo.leftWheel.motorTorque = motor;
                 axleInfo.rightWheel.motorTorque = motor;
             }
+
+            VisualWheelCollider(axleInfo.leftWheel);
+            VisualWheelCollider(axleInfo.rightWheel);
         }
     }
 }
