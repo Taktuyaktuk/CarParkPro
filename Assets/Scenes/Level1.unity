@@ -1378,7 +1378,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 304691494}
-  m_LocalRotation: {x: 0.42744356, y: 0.099436834, z: -0.047367975, w: 0.89730746}
+  m_LocalRotation: {x: 0.4274436, y: 0.0994368, z: -0.047367956, w: 0.89730746}
   m_LocalPosition: {x: -2.519301, y: 14.18041, z: -11.227367}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -2214,12 +2214,12 @@ GameObject:
   m_Component:
   - component: {fileID: 590971844}
   m_Layer: 0
-  m_Name: GearBox
+  m_Name: GearBoxOld
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &590971844
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2985,7 +2985,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ad462e71f7d5db4cab6e917b0a39595, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _gearBoxImage: {fileID: 1579344059}
+  _gearBoxImage: {fileID: 126120540}
   _gearBoxForward: {fileID: 21300000, guid: 1038411f5cfb37d418340bc74c503cef, type: 3}
   _gearBoxBackward: {fileID: 21300000, guid: ce92c6e27043b3345b38294275f1e740, type: 3}
   DrivingForward: 1
@@ -4286,7 +4286,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1379477321}
-  m_LocalRotation: {x: 0.42744356, y: 0.099436834, z: -0.047367975, w: 0.89730746}
+  m_LocalRotation: {x: 0.4274436, y: 0.0994368, z: -0.047367956, w: 0.89730746}
   m_LocalPosition: {x: -3.3384774, y: 19.508142, z: -21.398125}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -4353,7 +4353,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1414863382}
-  m_LocalRotation: {x: -0.00000005444316, y: 0.7402422, z: -0.67234033, w: -0.00000005994155}
+  m_LocalRotation: {x: 0.00000005757097, y: 0.7402422, z: -0.67234033, w: 0.000000063385244}
   m_LocalPosition: {x: -0.013, y: 8.76, z: -5.810001}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -5176,7 +5176,7 @@ GameObject:
   - component: {fileID: 1777623424}
   - component: {fileID: 1777623425}
   m_Layer: 0
-  m_Name: Slider
+  m_Name: GearBoxSlider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5201,7 +5201,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -155.3, y: 309.9}
+  m_AnchoredPosition: {x: -70, y: 309.9}
   m_SizeDelta: {x: 20, y: 160}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1777623425
@@ -5254,7 +5254,19 @@ MonoBehaviour:
   m_Value: 1
   m_OnValueChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 836732255}
+        m_TargetAssemblyTypeName: GearBoxManager, Assembly-CSharp
+        m_MethodName: GearChanger
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &1849726444
 GameObject:
   m_ObjectHideFlags: 0
@@ -6052,7 +6064,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2144971245}
-  m_LocalRotation: {x: 0.14521314, y: 0.000000032966827, z: -0.000000004838502, w: 0.98940045}
+  m_LocalRotation: {x: 0.14521314, y: 0.000000032966824, z: -0.0000000048385016, w: 0.98940045}
   m_LocalPosition: {x: -0.013, y: 3.79, z: -16.578}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
