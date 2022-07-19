@@ -11,15 +11,53 @@ public class CarController : MonoBehaviour
     public float Acceleration;
     public float Brake;
 
+    public GameObject SteeringWheel;
+    public Rigidbody rb;
+    public float ScaledSpeed;
+
     [SerializeField]
     private bool _drivingForward;
+    [SerializeField]
+    private float _scaleMultiplier;
+    
+    private Vector3 _oldPosition;
 
-    public Rigidbody rb;
-    private Vector3 Speed;
-
+    private void Awake()
+    {
+        if(_scaleMultiplier == 0)
+        {
+            _scaleMultiplier = 1;
+        }
+    }
     private void Update()
     {
         _drivingForward = GameObject.Find("GearBoxManager").GetComponent<GearBoxManager>().DrivingForward;
+    }
+
+    public void FixedUpdate()
+    {
+        //float motor = MaxMotorTorque * Input.GetAxis("Vertical");
+        float motor = MaxMotorTorque * Acceleration;
+        //float steering = MaxSteeringAngle * Input.GetAxis("Horizontal");
+        float steering = MaxSteeringAngle * SteeringWheel.GetComponent<SteeringWheel>().OutPut();
+
+        foreach (AxleInfo axleInfo in axleInfos)
+        {
+            if (axleInfo.steering)
+            {
+                axleInfo.leftWheel.steerAngle = steering;
+                axleInfo.rightWheel.steerAngle = steering;
+            }
+            if (axleInfo.motor)
+            {
+                axleInfo.leftWheel.motorTorque = motor;
+                axleInfo.rightWheel.motorTorque = motor;
+            }
+
+            VisualWheelCollider(axleInfo.leftWheel);
+            VisualWheelCollider(axleInfo.rightWheel);
+        }
+        ActualSpeed();
     }
 
     public void VisualWheelCollider(WheelCollider collider)
@@ -50,7 +88,6 @@ public class CarController : MonoBehaviour
         }
     }
     
-
     public void BrakeInput()
     {
         foreach (AxleInfo axleInfo in axleInfos)
@@ -75,32 +112,16 @@ public class CarController : MonoBehaviour
         }
     }
 
-
-
-    public GameObject SteeringWheel;
-
-    public void FixedUpdate()
+    private void ActualSpeed()
     {
-        //float motor = MaxMotorTorque * Input.GetAxis("Vertical");
-        float motor = MaxMotorTorque * Acceleration;
-        //float steering = MaxSteeringAngle * Input.GetAxis("Horizontal");
-        float steering = MaxSteeringAngle * SteeringWheel.GetComponent<SteeringWheel>().OutPut();
-
-        foreach (AxleInfo axleInfo in axleInfos)
+        float scaledVelocity = (rb.velocity.magnitude * 3.6f) * _scaleMultiplier;
+        if (scaledVelocity >= 0.1)
         {
-            if(axleInfo.steering)
-            {
-                axleInfo.leftWheel.steerAngle = steering;
-                axleInfo.rightWheel.steerAngle = steering;
-            }
-            if(axleInfo.motor)
-            {
-                axleInfo.leftWheel.motorTorque = motor;
-                axleInfo.rightWheel.motorTorque = motor;
-            }
-
-            VisualWheelCollider(axleInfo.leftWheel);
-            VisualWheelCollider(axleInfo.rightWheel);
+            ScaledSpeed = scaledVelocity;
+        }
+        else
+        {
+            ScaledSpeed = 0;
         }
     }
 }
